@@ -1,0 +1,64 @@
+<div ng-controller="itemsCtrl as vm">
+    <h2>{{vm.obj.id>0?'Edit item':'Add new item'}}</h2>
+    <form role="form">
+        <div class="row">
+           <!-- <div class="form-group col-lg-12">-->
+                <div ng-class="vm.obj.aFileIds.length>0?'form-group col-lg-6':'form-group col-lg-12'">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" ng-model="vm.obj.name"/>
+
+                <label for="sel1">Group:</label>
+                <select class="form-control" id="sel1" name="sel1" ng-model="vm.obj.groupId" class="danger">
+                    <option ng-repeat="row in vm.allGroups" value="{{row.id}}">{{row.name}}</option>
+                </select>
+
+                <div class="alert alert-danger" ng-if="vm.errorMsg.groupErr">
+                    <strong>Group</strong> is required field
+                </div>
+
+                <label for="name">Price:</label>
+                <input  class="form-control" id="price" name="price" ng-model="vm.obj.price" type="number" value="0.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency"  />
+
+                <label for="shortDescription">Short description:</label>
+                <input class="form-control" id="shortDescription" name="shortDescription" ng-model="vm.obj.shortDescription"/>
+
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" name="description" ng-model="vm.obj.description" rows="5"></textarea>
+            </div>
+
+            <div class="col-lg-6" ng-if="vm.obj.aFileIds.length">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in vm.obj.aFileIds track by $index">
+
+                        <td><span class="glyphicon glyphicon-arrow-up text-center" ng-click="vm.changeFilesOrder({index: $index, direction: 'up'})" ng-if="$index>0"></span></td>
+                        <td><span class="glyphicon glyphicon-arrow-down text-center"  ng-click="vm.changeFilesOrder({index: $index, direction: 'down'})" ng-if="$index!==vm.obj.aFileIds.length-1"></span></td>
+                        <td><img style="width: 20%" src="serve?blob-key={{row}}" ng-if="row" alt="" ng-cloak></td>
+                        <!--<td><span class="glyphicon glyphicon-remove" ng-click="itemsCtrl.removeFile({index: $index})"></span></td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary" ng-click="vm.save()" ng-if="!vm.obj.id"><span class="glyphicon glyphicon-plus"></span>&nbsp;Create</button>
+        <button type="submit" class="btn btn-primary" ng-click="vm.update()" ng-if="vm.obj.id>0"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Save</button>
+        <a type="button" class="btn btn-default" href="/#items/"><span class="glyphicon glyphicon-menu-left"></span>&nbsp;Back</a>
+    </form>
+
+    <pre>
+        {{vm.obj|json}}
+    </pre>
+
+</div>

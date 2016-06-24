@@ -1,0 +1,30 @@
+<div ng-controller="itemsCtrl as vm">
+
+    <div ng-repeat="row in vm.allObj">
+        <h2>{{row.name}}</h2>
+        <p>{{row.shortDescription}}</p>
+
+
+        <div ng-if="main.user.id">
+            <button type="button" class="btn btn-success" ng-click="vm.addToBasket(row)"><span class="glyphicon glyphicon-pencil"></span> Add to basket</button>
+            <div class="form-group">
+                <label for="comment">Comment: </label>
+                <textarea ng-model="row.comment" class="form-control" rows="5" id="comment"></textarea>
+                <button type="button" class="btn btn-success" ng-click="vm.addComment({row: row, comment: row.comment})"><span class="glyphicon glyphicon-pencil"></span> Add comment</button>
+            </div>
+        </div>
+
+        <div ng-repeat="comment in row.comments">
+            <img src="{{vm.allUsersAsHash[comment.userId].picture}}" class="profile-image img-circle img-responsive"/> : {{comment.comment}}
+            <br><br><br>
+        </div>
+        <br>
+
+        <hr/>
+    </div>
+
+    <!--<pre>
+        {{vm.allUsersAsHash | json}}
+    </pre>-->
+
+</div>

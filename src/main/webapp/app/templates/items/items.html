@@ -1,0 +1,20 @@
+<div ng-controller="itemsCtrl as vm">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th><!--<span class="glyphicon glyphicon-pencil">--></span></th>
+            <th><!--<span class="glyphicon glyphicon-photo">--></span></th>
+            <th><!--<span class="glyphicon glyphicon-remove">--></th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in vm.allObj">
+            <td>{{row.name}}</td>
+            <td><button type="button" class="btn btn-success" ng-click="vm.addEdit(row)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</button></td>
+            <td><a type="button" class="btn btn-default" href="index.html#/files_add_edit/{{row.id}}"><span class="glyphicon glyphicon-camera"></span> Add image</a></td>
+            <td><button type="button" class="btn btn-danger" ng-click="vm.remove({id: row.id, index: $index})"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</button></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn lg btn-success" ng-click="vm.addEdit({})"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add new</button>
+</div>
