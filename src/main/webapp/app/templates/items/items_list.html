@@ -1,29 +1,3 @@
-
-<div class="row">
-    <div class="col-sm-6">
-        <div class="card card-block">
-            <h3 class="card-title">Special title treatment</h3>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="card card-block">
-            <h3 class="card-title">Special title treatment</h3>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="card card-block">
-            <h3 class="card-title">Special title treatment</h3>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-</div>
-
-
 <section id="one" ng-controller="itemsCtrl as vm">
     <div class="container wow fadeInUp">
         <h2>Cards</h2>
@@ -31,25 +5,25 @@
             What you notice first in <a href="http://v4-alpha.getbootstrap.com/">Bootstrap 4</a> is that <code>.panel</code> and <code>.well</code> have been replaced by the <code>.card</code>. This makes a lot of sense as "cards" are one of the more well known trends in responsive design.
             The <a href="">Bootstrap 4 Cards</a> can be singular, grouped together (as shown) or <a href="">equal height</a>. There are many different layout and content options.
         </p>
-        <div class="card-group">
-            <div class="row">
-                <div class="col-sm-6">
-                    <!-- card -->
-                    <div class="card" ng-repeat="row in vm.allObj">
-                        <img class="card-img-top img-fluid" src="serve?blob-key={{row.aFileIds[0]}}" alt="Item image">
-                        <div class="card-block">
-                            <h4 class="card-title">{{row.name}}</h4>
-                            <p class="card-text">{{row.shortDescription}}</p>
-                        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6" ng-repeat="row in vm.allObj">
+                <div class="card card-block text-xs-center">
+                    <img class="card-img-top img-fluid" src="serve?blob-key={{row.aFileIds[0]}}" alt="Item image">
+                    <div class="card-block">
+                        <h4 class="card-title">{{row.name}}</h4>
+                        <p class="card-text">{{row.shortDescription}}</p>
                     </div>
-                    <!-- card end-->
+                    <button type="button" class="btn btn-success" ng-click="vm.addToBasket(row)"><span class="glyphicon glyphicon-pencil"></span> Add to basket</button>
                 </div>
             </div>
         </div>
 
+
+
     </div>
 </section>
-
 
 
 <div ng-controller="itemsCtrl as vm">
