@@ -7,6 +7,12 @@ ngApp.controller('mainCtrl', function($scope, $http, $log, localStorageService, 
 		allGroups:  GroupFactory.query(),
 		ps: PSFactory.query({id: localStorageService.get("psId")}),
 	};
+
+	$scope.logOut = function () {
+		localStorageService.remove("user");
+		$scope.main.user = {};
+	};
+
 });
 
 ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $provide, $routeProvider, $httpProvider, $locationProvider, $authProvider) {
