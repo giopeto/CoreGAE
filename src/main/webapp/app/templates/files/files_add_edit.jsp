@@ -1,7 +1,7 @@
 <%@ page import="com.google.appengine.api.blobstore.BlobstoreServiceFactory" %>
 <%@ page import="com.google.appengine.api.blobstore.BlobstoreService" %>
 <% BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService(); %>
-<div ng-controller="filesCtrl as vm">
+<div ng-controller="filesCtrl as vm"  class="container wow fadeInUp">
     Add image to {{vm.obj.name}}
     <form action="<%= blobstoreService.createUploadUrl("/upload") %>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="itemId" value="{{vm.obj.id}}">

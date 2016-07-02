@@ -203,8 +203,11 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
 				return deferred.promise;
 			}]
 		}
+	}).when('/home', {
+		templateUrl: 'app/templates/home/home.html'
+
 	}).otherwise({
-		redirectTo: '/items',
+		redirectTo: '/home',
 	});
 
 

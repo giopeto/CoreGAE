@@ -1,20 +1,29 @@
-<div ng-controller="itemsCtrl as vm">
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th><!--<span class="glyphicon glyphicon-pencil">--></span></th>
-            <th><!--<span class="glyphicon glyphicon-photo">--></span></th>
-            <th><!--<span class="glyphicon glyphicon-remove">--></th>
-        </thead>
-        <tbody>
+<section ng-controller="itemsCtrl as vm">
+    <div class="container wow fadeInUp">
+        <h2>Items</h2>
+       <!-- <p class="lead">
+            What you notice first in <a href="http://v4-alpha.getbootstrap.com/">Bootstrap 4</a> is that <code>.panel</code> and <code>.well</code> have been replaced by the <code>.card</code>. This makes a lot of sense as "cards" are one of the more well known trends in responsive design.
+            The <a href="">Bootstrap 4 Cards</a> can be singular, grouped together (as shown) or <a href="">equal height</a>. There are many different layout and content options.
+        </p>-->
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th><!--<span class="glyphicon glyphicon-pencil">--></span></th>
+                <th><!--<span class="glyphicon glyphicon-photo">--></span></th>
+                <th><!--<span class="glyphicon glyphicon-remove">--></th>
+            </thead>
+            <tbody>
             <tr ng-repeat="row in vm.allObj">
                 <td>{{row.name}}</td>
                 <td><button type="button" class="btn btn-success" ng-click="vm.addEdit(row)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</button></td>
                 <td><a type="button" class="btn btn-default" href="index.html#/files_add_edit/{{row.id}}"><span class="glyphicon glyphicon-camera"></span> Add image</a></td>
                 <td><button type="button" class="btn btn-danger" ng-click="vm.remove({id: row.id, index: $index})"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</button></td>
             </tr>
-        </tbody>
-    </table>
-    <button type="button" class="btn lg btn-success" ng-click="vm.addEdit({})"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add new</button>
-</div>
+            </tbody>
+        </table>
+        <button type="button" class="btn lg btn-success" ng-click="vm.addEdit({})"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add new</button>
+    </div>
+</section>
+
