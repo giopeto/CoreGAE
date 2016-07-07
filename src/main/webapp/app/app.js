@@ -2,6 +2,7 @@
 var ngApp = angular.module('ngApp', ['ngRoute', 'ngResource', 'satellizer']);
 
 ngApp.controller('mainCtrl', function($scope, $http, $log, localStorageService, GroupFactory, PSFactory) {
+
 	$scope.main = {
 		user: localStorageService.get("user"),
 		allGroups:  GroupFactory.query(),
@@ -92,6 +93,29 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
 				return deferred.promise;
 			}]
 		}
+
+	}).when('/item_info/:id', {
+		templateUrl: 'app/templates/items/item_info.html',
+		resolve: {
+			load: ['$q', '$rootScope', function ($q, $rootScope) {
+				var deferred = $q.defer();
+				require([
+					'app/controllers/items/items.controller.js',
+					'app/services/items/item.service.js',
+					'app/services/users/user.service.js'
+					/*'app/services/groups/group.service.js',*/
+				], function () {
+					$rootScope.$apply(function () {
+						deferred.resolve();
+					}, function (err) {
+						console.log ('RouteProvider resolve error: ', err );
+					});
+				});
+				return deferred.promise;
+			}]
+		}
+
+
 	}).when('/items_list/:groupId', {
 		templateUrl: 'app/templates/items/items_list.html',
 		resolve: {

@@ -89,7 +89,7 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 	};
 
 	function info (args){
-
+		$location.path('/item_info/'+args.id);
 	};
 
 	function goBack () {
@@ -115,7 +115,6 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 	};
 
 	function changeFilesOrder (args) {
-		var index = args.index;
 		var tmpArr = [];
 		angular.copy(vm.obj.aFileIds, tmpArr);
 
