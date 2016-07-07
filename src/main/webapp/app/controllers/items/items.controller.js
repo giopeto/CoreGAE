@@ -18,10 +18,12 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 	vm.get = get;
 	vm.update = update;
 	vm.addEdit = addEdit;
+	vm.info = info;
 	vm.remove = remove;
 	vm.changeFilesOrder = changeFilesOrder;
 	vm.addToBasket = addToBasket;
 	vm.addComment = addComment;
+	vm.removeFile = removeFile;
 
 	var skipGoBack = 0;
 
@@ -86,6 +88,10 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 		$location.path('/items_add_edit/'+id);
 	};
 
+	function info (args){
+
+	};
+
 	function goBack () {
 		$location.path('/items');
 	};
@@ -123,6 +129,11 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 
 		vm.obj.aFileIds = tmpArr;
 	};
+
+	function removeFile (args) {
+		vm.obj.aFileIds.splice(args.index, 1);
+	};
+
 
 	function addToBasket (args) {
 		changeLoadingState();

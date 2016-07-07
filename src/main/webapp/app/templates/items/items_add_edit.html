@@ -32,9 +32,11 @@
                         <table class="table table-striped table-hover">
                             <tbody>
                                 <tr ng-repeat="row in vm.obj.aFileIds track by $index">
-                                    <td><a href=""><i class="ion-arrow-up-a text-center" ng-click="vm.changeFilesOrder({index: $index, direction: 'up'})" ng-if="$index>0"></i></a></td>
-                                    <td><a href=""><i class="ion-arrow-down-a text-center" ng-click="vm.changeFilesOrder({index: $index, direction: 'down'})" ng-if="$index!==vm.obj.aFileIds.length-1"></i></a></td>
-                                    <td><img style="width: 20%" src="serve?blob-key={{row}}" ng-if="row" alt="" ng-cloak></td>
+                                    <td><button class="btn btn-secondary btn-sm" type="button" ng-if="$index>0"><i class="ion-arrow-up-a text-center" ng-click="vm.changeFilesOrder({index: $index, direction: 'up'})"></i></button></td>
+                                    <!--<td><a href=""><i class="ion-arrow-down-a text-center" ng-click="vm.changeFilesOrder({index: $index, direction: 'down'})" ng-if="$index!==vm.obj.aFileIds.length-1"></i></a></td>-->
+                                    <td><button class="btn btn-secondary btn-sm" type="button" ng-if="$index!==vm.obj.aFileIds.length-1"><i class="ion-arrow-down-a" ng-click="vm.changeFilesOrder({index: $index, direction: 'down'})"></i></button></td>
+                                    <td><img style="width: 50%" src="serve?blob-key={{row}}" ng-if="row" alt="" class="img-fluid center-block" ng-cloak></td>
+                                    <td><button type="button" class="btn btn-danger btn-sm" ng-click="vm.removeFile({index: $index})"><i class="ion-trash-a"></i></button></td>
                                 </tr>
                             </tbody>
                         </table>
