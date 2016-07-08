@@ -162,8 +162,7 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 		if (!args.comment) {
 			return;
 		}
-		var commentsLength = args.row.comments.length++;
-		args.row.comments[commentsLength] = {userId: $scope.main.user.id, comment: args.comment};
+		args.row.comments.unshift({userId: $scope.main.user.id, comment: args.comment});
 		vm.obj = args.row;
 		skipGoBack = 1;
 		args.row.comment = '';
