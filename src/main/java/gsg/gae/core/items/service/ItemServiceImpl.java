@@ -44,7 +44,7 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public List getByGroupId(Long groupId) {
-		return objectifyService.ofy().load().type(Item.class).filter("groupId", groupId).list();
+		return objectifyService.ofy().load().type(Item.class).filter("groupId", groupId).order("-date").list();
 	}
 
 

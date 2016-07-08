@@ -1,6 +1,8 @@
 (function($) {
     "use strict";
 
+    alert ('ASDASD');
+
     $('body').scrollspy({
         target: '.navbar-fixed-top',
         offset: 60

@@ -149,6 +149,14 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 
 	};
 
+	function getAllUsers () {
+		vm.allUsers = UserFactory.query().$promise.then(function(data){
+			data.forEach(function (v) {
+				vm.allUsersAsHash[v.id] = v;
+			});
+		})
+	}
+
 	function addComment (args) {
 		//args.row.comments = [];
 		if (!args.comment) {
@@ -171,6 +179,7 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 			$log.log ("Error: ", error);
 			changeLoadingState();
 		});
+		getAllUsers();
 	} else if ($routeParams.groupId > 0){
 		changeLoadingState();
 		$http.get('items/getByGroupId/'+$routeParams.groupId, {
@@ -183,14 +192,6 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 			$log.log("ERROR: "+error);
 			changeLoadingState();
 		});
-
-		vm.allUsers = UserFactory.query().$promise.then(function(data){
-			data.forEach(function (v) {
-				vm.allUsersAsHash[v.id] = v;
-			});
-		})
-
-
 	} else {
 		get();
 	}
