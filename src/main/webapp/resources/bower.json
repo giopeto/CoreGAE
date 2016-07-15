@@ -20,6 +20,8 @@
     "angular-route": "~1.4.4",
     "bootstrap": "~3.3.5",
     "requirejs": "~2.1.20",
-    "angular-resource": "~1.4.6"
+    "angular-resource": "~1.4.6",
+    "sockjs-client ": "",
+    "stomp-websocket": ""
   }
 }
